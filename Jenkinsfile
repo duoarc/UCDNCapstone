@@ -45,7 +45,7 @@ pipeline {
                     sh '''
                         sudo -s
                         echo "start deployment"
-                        kubectl apply -f deployments/rolling.yaml
+                        kubectl apply -f deployment/rolling.yaml
 			kubectl get nodes
 			kubectl get deployment
 			kubectl get pod -o wide
