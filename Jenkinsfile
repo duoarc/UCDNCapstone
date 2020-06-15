@@ -31,7 +31,6 @@ pipeline {
                     sh '''
                             sudo -s
                             kubectl config get-contexts
-                            kubectl config use-context arn:aws:eks:eu-central-1:862214991036:cluster/ucdncapstonecluster
                     '''
                 }
             }
