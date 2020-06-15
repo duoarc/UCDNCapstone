@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 sudo apt-get update && sudo apt-get -y upgrade
 sudo apt-get -y install default-jdk
 wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -

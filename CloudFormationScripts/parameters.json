@@ -1,0 +1,42 @@
+[
+  {
+    "ParameterKey": "EnvironmentName",
+    "ParameterValue": "UCDNCapstoneProject"
+  },
+  {
+    "ParameterKey": "VpcCIDR",
+    "ParameterValue": "10.0.0.0/16"
+  },
+  {
+    "ParameterKey": "PublicSubnet1CIDR",
+    "ParameterValue": "10.0.0.0/24"
+  },
+  {
+    "ParameterKey": "PublicSubnet2CIDR",
+    "ParameterValue": "10.0.1.0/24"
+  },
+  {
+    "ParameterKey": "PublicSubnet3CIDR",
+    "ParameterValue": "10.0.2.0/124"
+  },
+  {
+    "ParameterKey": "KeyPairName",
+    "ParameterValue": "custom-key-pair"
+  },
+  {
+    "ParameterKey": "DesiredInstances",
+    "ParameterValue": "3"
+  },
+  {
+    "ParameterKey": "ImageID",
+    "ParameterValue": "ami-0d1cd67c26f5fca19"
+  },
+  {
+    "ParameterKey": "MinSize",
+    "ParameterValue": "1"
+  },
+  {
+    "ParameterKey": "MaxSize",
+    "ParameterValue": "4"
+  }
+]
