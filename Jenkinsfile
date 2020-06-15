@@ -39,22 +39,51 @@ pipeline {
                 }
             }
         }
-	stage('deployment') {
+	stage('Deploy blue container') {
+			steps {
+				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
+					sh '''
+						kubectl apply -f ./blue-controller.json
+					'''
+				}
+			}
+		}
+
+		stage('Deploy green container') {
+			steps {
+				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
+					sh '''
+						kubectl apply -f ./green-controller.json
+					'''
+				}
+			}
+		}
+
+		stage('Create the service in the cluster, redirect to blue') {
+			steps {
+				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
+					sh '''
+						kubectl apply -f ./blue-service.json
+					'''
+				}
+			}
+		}
+
+		stage('Wait user approve') {
             steps {
-                withAWS(region:'eu-central-1',credentials:'udacity-capstone') {
-                    sh '''
-                        sudo -s
-                        echo "start deployment"
-                        kubectl apply -f deployment/rolling.yaml
-			kubectl get nodes
-			kubectl get deployment
-			kubectl get pod -o wide
-			kubectl get service/ucdncapstonecluster
-                        echo "finish deployments"
-                    '''
-                }
+                input "Ready to redirect traffic to green?"
             }
         }
+
+		stage('Create the service in the cluster, redirect to green') {
+			steps {
+				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
+					sh '''
+						kubectl apply -f ./green-service.json
+					'''
+				}
+			}
+		}
     }
 }
 
