@@ -27,11 +27,13 @@ pipeline {
         }
         stage('Set current kubectl context') {
             steps {
-                withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
+                withAWS(region:'eu-central-1',credentials:'udacity-capstone') {
                     sh '''
-                            sudo -s
-                            kubectl config use-context arn:aws:eks:eu-central-1:862214991036:cluster/ucdncapstonecluster
-                    '''
+                        sudo -s
+			echo "start set context"    
+                        kubectl config use-context arn:aws:eks:eu-central-1:862214991036:cluster/ucdncapstonecluster
+                    	echo "finish set context"
+		    '''
                 }
             }
         }
