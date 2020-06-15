@@ -31,6 +31,7 @@ pipeline {
                     sh '''
                         sudo -s
 			echo "start set context"
+			aws eks --region eu-central-1 update-kubeconfig --name ucdncapstonecluster
 			kubectl config get-contexts    
                         kubectl config use-context arn:aws:eks:eu-central-1:862214991036:cluster/ucdncapstonecluster
                     	echo "finish set context"
