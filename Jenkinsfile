@@ -30,7 +30,7 @@ pipeline {
                 withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
                     sh '''
                             sudo -s
-                            kubectl config get-contexts
+                            kubectl config use-context arn:aws:eks:eu-central-1:862214991036:cluster/ucdncapstonecluster
                     '''
                 }
             }
