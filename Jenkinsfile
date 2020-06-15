@@ -43,7 +43,7 @@ pipeline {
 			steps {
 				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
 					sh '''
-						kubectl apply -f ./blue-controller.json
+						kubectl apply -f deployment/blue-controller.json
 					'''
 				}
 			}
@@ -53,7 +53,7 @@ pipeline {
 			steps {
 				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
 					sh '''
-						kubectl apply -f ./green-controller.json
+						kubectl apply -f deployment/green-controller.json
 					'''
 				}
 			}
@@ -63,7 +63,7 @@ pipeline {
 			steps {
 				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
 					sh '''
-						kubectl apply -f ./blue-service.json
+						kubectl apply -f deployment/blue-service.json
 					'''
 				}
 			}
@@ -79,7 +79,7 @@ pipeline {
 			steps {
 				withAWS(region:'eu-central-1', credentials:'udacity-capstone') {
 					sh '''
-						kubectl apply -f ./green-service.json
+						kubectl apply -f deployment/green-service.json
 					'''
 				}
 			}
