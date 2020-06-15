@@ -39,6 +39,22 @@ pipeline {
                 }
             }
         }
+	stage('deployment') {
+            steps {
+                withAWS(region:'eu-central-1',credentials:'udacity-capstone') {
+                    sh '''
+                        sudo -s
+                        echo "start deployment"
+                        kubectl apply -f deployment/rolling.yaml
+			kubectl get nodes
+			kubectl get deployment
+			kubectl get pod -o wide
+			kubectl get service/ucdncapstonecluster
+                        echo "finish deployments"
+                    '''
+                }
+            }
+        }
     }
 }
 
