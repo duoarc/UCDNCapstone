@@ -10,7 +10,7 @@ pipeline {
 	steps {
 		withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'dockerhub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD']]){
 					sh '''
-						sudo docker build -t duodev/UCDNcapstonecluster .
+						sudo -n docker build -t duodev/UCDNcapstonecluster .
 					'''
 				}
 			}
